@@ -9,6 +9,7 @@ const LinkedList = () => {
 
     const getSize = () => size;
     const getHead = () => head;
+    const getTail = () => tail;
 
     const append = (value) => {
         let node = Node(value);
