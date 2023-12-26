@@ -35,9 +35,23 @@ const LinkedList = () => {
         size += 1;
     };
 
+    const at = (index) => {
+        if (index >= size) return null;
+
+        let i = 0;
+        let node = head;
+        while (i < index) {
+            node = node.getPointer();
+            i += 1;
+        }
+
+        return node;
+    };
+
     return {
         append,
         prepend,
+        at,
         getSize,
         getHead,
         getTail,
