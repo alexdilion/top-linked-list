@@ -27,17 +27,21 @@ const LinkedList = () => {
     const prepend = (value) => {
         let node = Node(value);
 
-        if (!head) {
-            head = node;
-        } else {
+        if (head) {
             node.setPointer(head);
-            head = node;
         }
 
+        head = node;
         size += 1;
     };
 
-    return { append, prepend, getSize };
+    return {
+        append,
+        prepend,
+        getSize,
+        getHead,
+        getTail,
+    };
 };
 
 export default LinkedList;
