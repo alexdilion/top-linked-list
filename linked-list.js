@@ -18,7 +18,18 @@ const LinkedList = () => {
         tail = node;
     };
 
-    return { append };
+    const prepend = (value) => {
+        let node = Node(value);
+
+        if (!head) {
+            head = node;
+        } else {
+            node.setPointer(head);
+            head = node;
+        }
+    };
+
+    return { append, prepend };
 };
 
 export default LinkedList;
