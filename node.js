@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-const Node = () => {
-    let value = null;
+const Node = (initialValue = null) => {
+    let value = initialValue;
     let pointer = null;
 
     const getValue = () => value;
@@ -11,8 +11,8 @@ const Node = () => {
         value = newValue;
     };
 
-    const setPointer = (newPointer) => {
-        pointer = newPointer;
+    const setPointer = (nextNode) => {
+        pointer = nextNode;
     };
 
     return {
