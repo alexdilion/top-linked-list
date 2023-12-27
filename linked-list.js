@@ -29,6 +29,8 @@ const LinkedList = () => {
 
         if (head) {
             node.setNext(head);
+        } else {
+            tail = node;
         }
 
         head = node;
@@ -101,8 +103,7 @@ const LinkedList = () => {
             node = node.getNext();
         }
 
-        listStr += "null";
-        return listStr;
+        return (listStr += "null");
     };
 
     return {
