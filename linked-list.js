@@ -17,7 +17,7 @@ const LinkedList = () => {
         if (!head) {
             head = node;
         } else {
-            tail.setPointer(node);
+            tail.setNext(node);
         }
 
         tail = node;
@@ -28,7 +28,7 @@ const LinkedList = () => {
         let node = Node(value);
 
         if (head) {
-            node.setPointer(head);
+            node.setNext(head);
         }
 
         head = node;
@@ -41,20 +41,46 @@ const LinkedList = () => {
         let i = 0;
         let node = head;
         while (i < index) {
-            node = node.getPointer();
+            node = node.getNext();
             i += 1;
         }
 
         return node;
     };
 
+    const pop = () => {
+        let node = head;
+
+        if (size <= 1) {
+            head = null;
+            tail = null;
+            size = 0;
+
+            return node;
+        }
+
+        let i = 1;
+        while (i < size - 1) {
+            node = node.getNext();
+            i += 1;
+        }
+
+        let poppedNode = tail;
+        tail = node;
+        tail.clearNext();
+        size -= 1;
+
+        return poppedNode;
+    };
+
     return {
-        append,
-        prepend,
-        at,
         getSize,
         getHead,
         getTail,
+        append,
+        prepend,
+        at,
+        pop,
     };
 };
 
