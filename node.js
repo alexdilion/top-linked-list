@@ -2,24 +2,29 @@
 
 const Node = (initialValue = null) => {
     let value = initialValue;
-    let pointer = null;
+    let next = null;
 
     const getValue = () => value;
-    const getPointer = () => pointer;
+    const getNext = () => next;
 
     const setValue = (newValue) => {
         value = newValue;
     };
 
-    const setPointer = (nextNode) => {
-        pointer = nextNode;
+    const setNext = (newPointer) => {
+        next = newPointer;
+    };
+
+    const clearNext = () => {
+        next = null;
     };
 
     return {
         getValue,
-        getPointer,
+        getNext,
         setValue,
-        setPointer,
+        setNext,
+        clearNext,
     };
 };
 
