@@ -106,6 +106,25 @@ const LinkedList = () => {
         return (listStr += "null");
     };
 
+    const insertAt = (value, index) => {
+        if (index <= 0) {
+            prepend(value);
+            return;
+        } else if (index >= size) {
+            append(value);
+            return;
+        }
+
+        let currNode = head;
+        for (let i = 0; i < index - 1; i++) {
+            currNode = head.getNext();
+        }
+
+        const newNode = Node(value);
+        newNode.setNext(currNode.getNext());
+        currNode.setNext(newNode);
+    };
+
     return {
         getSize,
         getHead,
@@ -117,6 +136,7 @@ const LinkedList = () => {
         contains,
         find,
         toString,
+        insertAt,
     };
 };
 
