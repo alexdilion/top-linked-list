@@ -116,6 +116,7 @@ const LinkedList = () => {
         }
 
         let currNode = head;
+        // Get node that points to the node at index
         for (let i = 0; i < index - 1; i++) {
             currNode = head.getNext();
         }
@@ -123,6 +124,29 @@ const LinkedList = () => {
         const newNode = Node(value);
         newNode.setNext(currNode.getNext());
         currNode.setNext(newNode);
+        size += 1;
+    };
+
+    const removeAt = (index) => {
+        if (index <= 0) {
+            head = head.getNext();
+            size -= 1;
+            return;
+        } else if (index >= size) {
+            pop();
+            return;
+        }
+
+        let node = head;
+        // Get node that points to the node to be removed
+        for (let i = 0; i < index - 1; i++) {
+            node = node.getNext();
+        }
+
+        let toBeRemoved = node.getNext();
+        node.setNext(toBeRemoved.getNext());
+        toBeRemoved.clearNext();
+        size -= 1;
     };
 
     return {
@@ -137,6 +161,7 @@ const LinkedList = () => {
         find,
         toString,
         insertAt,
+        removeAt,
     };
 };
 
