@@ -82,6 +82,17 @@ const LinkedList = () => {
         return node !== null;
     };
 
+    const find = (value) => {
+        let node = head;
+        let i = 0;
+        while (node !== null && node.getValue() !== value) {
+            node = node.getNext();
+            i += 1;
+        }
+
+        return i < size ? i : null;
+    };
+
     return {
         getSize,
         getHead,
@@ -91,6 +102,7 @@ const LinkedList = () => {
         at,
         pop,
         contains,
+        find,
     };
 };
 
