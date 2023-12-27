@@ -17,7 +17,7 @@ const LinkedList = () => {
         if (!head) {
             head = node;
         } else {
-            tail.setNext(node);
+            tail.next = node;
         }
 
         tail = node;
@@ -28,7 +28,7 @@ const LinkedList = () => {
         let node = Node(value);
 
         if (head) {
-            node.setNext(head);
+            node.next = head;
         } else {
             tail = node;
         }
@@ -43,7 +43,7 @@ const LinkedList = () => {
         let i = 0;
         let node = head;
         while (i < index) {
-            node = node.getNext();
+            node = node.next;
             i += 1;
         }
 
@@ -63,13 +63,13 @@ const LinkedList = () => {
 
         let i = 0;
         while (i < size - 2) {
-            node = node.getNext();
+            node = node.next;
             i += 1;
         }
 
         let poppedNode = tail;
         tail = node;
-        tail.clearNext();
+        tail.next = null;
         size -= 1;
 
         return poppedNode;
@@ -77,8 +77,8 @@ const LinkedList = () => {
 
     const contains = (value) => {
         let node = head;
-        while (node !== null && node.getValue() !== value) {
-            node = node.getNext();
+        while (node !== null && node.value !== value) {
+            node = node.next;
         }
 
         return node !== null;
@@ -87,8 +87,8 @@ const LinkedList = () => {
     const find = (value) => {
         let node = head;
         let i = 0;
-        while (node !== null && node.getValue() !== value) {
-            node = node.getNext();
+        while (node !== null && node.value !== value) {
+            node = node.next;
             i += 1;
         }
 
@@ -99,8 +99,8 @@ const LinkedList = () => {
         let listStr = "";
         let node = head;
         while (node !== null) {
-            listStr += `( ${node.getValue()} ) -> `;
-            node = node.getNext();
+            listStr += `( ${node.value} ) -> `;
+            node = node.next;
         }
 
         return (listStr += "null");
@@ -118,18 +118,18 @@ const LinkedList = () => {
         let currNode = head;
         // Get node that points to the node at index
         for (let i = 0; i < index - 1; i++) {
-            currNode = head.getNext();
+            currNode = head.next;
         }
 
         const newNode = Node(value);
-        newNode.setNext(currNode.getNext());
-        currNode.setNext(newNode);
+        newNode.next = currNode.next;
+        currNode.next = newNode;
         size += 1;
     };
 
     const removeAt = (index) => {
         if (index <= 0) {
-            head = head.getNext();
+            head = head.next;
             size -= 1;
             return;
         } else if (index >= size) {
@@ -140,12 +140,12 @@ const LinkedList = () => {
         let node = head;
         // Get node that points to the node to be removed
         for (let i = 0; i < index - 1; i++) {
-            node = node.getNext();
+            node = node.next;
         }
 
-        let toBeRemoved = node.getNext();
-        node.setNext(toBeRemoved.getNext());
-        toBeRemoved.clearNext();
+        let toBeRemoved = node.next;
+        node.next = toBeRemoved.next;
+        toBeRemoved.next = null;
         size -= 1;
     };
 
