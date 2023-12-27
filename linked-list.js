@@ -93,6 +93,18 @@ const LinkedList = () => {
         return i < size ? i : null;
     };
 
+    const toString = () => {
+        let listStr = "";
+        let node = head;
+        while (node !== null) {
+            listStr += `( ${node.getValue()} ) -> `;
+            node = node.getNext();
+        }
+
+        listStr += "null";
+        return listStr;
+    };
+
     return {
         getSize,
         getHead,
@@ -103,6 +115,7 @@ const LinkedList = () => {
         pop,
         contains,
         find,
+        toString,
     };
 };
 
