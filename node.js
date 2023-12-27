@@ -16,7 +16,7 @@ const Node = (initialValue = null) => {
     };
 
     const clearNext = () => {
-        next = null;
+        setNext(null);
     };
 
     return {

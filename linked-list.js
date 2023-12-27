@@ -59,8 +59,8 @@ const LinkedList = () => {
             return node;
         }
 
-        let i = 1;
-        while (i < size - 1) {
+        let i = 0;
+        while (i < size - 2) {
             node = node.getNext();
             i += 1;
         }
@@ -73,6 +73,15 @@ const LinkedList = () => {
         return poppedNode;
     };
 
+    const contains = (value) => {
+        let node = head;
+        while (node !== null && node.getValue() !== value) {
+            node = node.getNext();
+        }
+
+        return node !== null;
+    };
+
     return {
         getSize,
         getHead,
@@ -81,6 +90,7 @@ const LinkedList = () => {
         prepend,
         at,
         pop,
+        contains,
     };
 };
 
